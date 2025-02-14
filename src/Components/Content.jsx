@@ -5,11 +5,13 @@ function Content() {
   const [count, setCount] = useState(0);
 
   const handlePlus = () => {
-    setCount(count + 1);
+    setCount(count + 3);
   };
 
   const handleMinus = () => {
-    setCount(count - 1);
+    if (count > 0) {
+      setCount(count - 2);
+    }
   };
 
   const handleReset = () => {
