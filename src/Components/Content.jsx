@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import Button from './Buttons';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Content() {
-  const [count, setCount] = useState(0);
-
-  const handlePlus = () => {
-    setCount(count + 3);
+  const count = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const handleplus = () => {
+    dispatch({ type: 'INCREMENT' });
   };
-
-  const handleMinus = () => {
-    if (count > 0) {
-      setCount(count - 2);
-    }
+  const handleminus = () => {
+    dispatch({ type: 'DECREMENT' });
   };
-
   const handleReset = () => {
-    setCount(0);
+    dispatch({ type: 'RESET' });
   };
 
   return (
@@ -24,9 +22,9 @@ function Content() {
         {count}
       </div>
       <div className='ButtonsSide'>
-        <Button text='Увеличить' className='plus' onClick={handlePlus} />
-        <Button text='Уменьшить' className='minus' onClick={handleMinus} />
-        <Button text='Сбросить' className='reset' onClick={handleReset} />
+        <Button text='Увеличить' className='plus' onClick={handleplus}/>
+        <Button text='Уменьшить' className='minus' onClick={handleminus}/>
+        <Button text='Сбросить' className='reset'  onClick={handleReset}/>
       </div>
     </div>
   );
